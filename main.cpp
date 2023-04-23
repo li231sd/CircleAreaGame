@@ -4,6 +4,10 @@
 #include <time.h>
 
 int main() {
+    #define print std::cout
+    #define input std::cin
+    #define newline '\n'
+
     const double pi {3.14};
 
     int maxRadius {};
@@ -12,25 +16,25 @@ int main() {
     std::string userPlayOver {};
     
     while (true) {
-        std::cout << "What is the min and max radius for the session (Please enter whole numbers!): ";
-        std::cin >> minRadius >> maxRadius;
+        print << "What is the min and max radius for the session (Please enter whole numbers!): ";
+        input >> minRadius >> maxRadius;
         
         srand(time(0));
         double radius = rand() % (maxRadius - minRadius + 1) + minRadius;
         const double circleArea {pow(radius, 2) * pi};
         
         double userCircleArea {};
-        std::cout << "What is the area of a circle with a radius of " << radius << ": ";
-        std::cin >> userCircleArea;
+        print << "What is the area of a circle with a radius of " << radius << ": ";
+        input >> userCircleArea;
         
         if (userCircleArea == circleArea) {
-            std::cout << "You are correct!" << '\n';
+            print << "You are correct!" << newline;
         } else {
-            std::cout << "You are incorrect! The correct answer was " << circleArea << '\n';
+            print << "You are incorrect! The correct answer was " << circleArea << newline;
         }
         
-        std::cout << "Would you like to play again? y/n: ";
-        std::cin >> userPlayOver;
+        print << "Would you like to play again? y/n: ";
+        input >> userPlayOver;
         
         if (userPlayOver == "n" || userPlayOver == "N") {
             break;
